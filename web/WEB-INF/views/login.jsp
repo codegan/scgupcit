@@ -17,7 +17,7 @@
 <head>
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Insert title here</title>
+    <title>Вход "Ситуационный центр ГУП "Центр информационных технологии"</title>
 
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">

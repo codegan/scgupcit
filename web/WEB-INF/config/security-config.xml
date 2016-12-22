@@ -19,18 +19,18 @@
         <remember-me remember-me-parameter="password_safe"/>
     </http>
 
-    <!--<beans:bean id="jdbcGroupImpl" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+    <beans:bean id="jdbcGroupImpl" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
         <beans:property name="dataSource" ref="dataSource"/>
         <beans:property name="enableGroups" value="true"/>
         <beans:property name="enableAuthorities" value="false"/>
-    </beans:bean>-->
+    </beans:bean>
     <authentication-manager>
-        <authentication-provider>
-        <!--<authentication-provider user-service-ref="jdbcGroupImpl">-->
+        <authentication-provider user-service-ref="jdbcGroupImpl"/>
+        <!--<authentication-provider>
             <user-service>
                 <user name="user" password="user" authorities="ROLE_USER" />
                 <user name="admin" password="admin" authorities="ROLE_ADMIN" />
             </user-service>
-        </authentication-provider>
+        </authentication-provider>-->
     </authentication-manager>
 </beans:beans>
