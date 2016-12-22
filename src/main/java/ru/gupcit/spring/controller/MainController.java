@@ -63,6 +63,6 @@ public class MainController {
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
     public String getUserApplication(){
-        return "/user/applications";
+        return "/user/application";
     }
 }

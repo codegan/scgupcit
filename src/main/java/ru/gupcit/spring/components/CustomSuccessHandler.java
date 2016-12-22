@@ -16,9 +16,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler;
-import org.springframework.stereotype.Component;
 
-@Component
 public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -36,10 +34,6 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
-    /*
-     * This method extracts the roles of currently logged-in user and returns
-     * appropriate URL according to his/her role.
-     */
     protected String determineTargetUrl(Authentication authentication) {
         String url = "";
 
@@ -51,12 +45,10 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
             roles.add(a.getAuthority());
         }
 
-        if (isDba(roles)) {
-            url = "/db";
-        } else if (isAdmin(roles)) {
+        if (isAdmin(roles)) {
             url = "/admin/application";
         } else if (isUser(roles)) {
-            url = "/home";
+            url = "/user/application";
         } else {
             url = "/accessDenied";
         }
@@ -73,13 +65,6 @@ public class CustomSuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
 
     private boolean isAdmin(List<String> roles) {
         if (roles.contains("ROLE_ADMIN")) {
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isDba(List<String> roles) {
-        if (roles.contains("ROLE_DBA")) {
             return true;
         }
         return false;

@@ -13,7 +13,8 @@
                     default-target-url="/admin"
                     authentication-failure-url="/login?error=true"
                     username-parameter="user_login"
-                    password-parameter="password_login" />
+                    password-parameter="password_login"
+                    authentication-success-handler-ref="successHandler"/>
         <logout logout-success-url="/login" />
         <remember-me remember-me-parameter="password_safe"/>
     </http>
