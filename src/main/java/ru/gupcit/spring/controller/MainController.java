@@ -47,8 +47,12 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/application", method = RequestMethod.GET)
-    public String getApplication(){
-        return "/admin/application";
+    public ModelAndView getApplication(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userDetails.getUsername());
+        modelAndView.setViewName("/admin/application");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
@@ -62,7 +66,11 @@ public class MainController {
     }
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
-    public String getUserApplication(){
-        return "/user/application";
+    public ModelAndView getUserApplication(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ModelAndView model = new ModelAndView();
+        model.addObject("user", userDetails.getUsername());
+        model.setViewName("/user/application");
+        return model;
     }
 }

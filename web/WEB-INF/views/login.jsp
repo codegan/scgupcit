@@ -22,9 +22,8 @@
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-    <script src="<c:url value="/resources/js/bootstrap.js" />"></script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
-    <script src="<c:url value="/resources/js/npm.js" />"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -33,7 +32,7 @@
     ${error}
 </c:if>
 <div class="form">
-    <form class="form-horizontal" role="form" method="POST" name='form_login' action="j_spring_security_check" >
+    <form class="form-horizontal" role="form" method="POST" name='form_login' action="j_spring_security_check">
         <div class="form-group">
             <div class="form-group">
                 <label class="col-sm-2 control-label">Логин</label>
