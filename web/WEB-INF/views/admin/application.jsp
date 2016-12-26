@@ -32,7 +32,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Заявки </a></li>
+                <li class="active"><a href="#">Заявки <span class="badge">4</span></a></li>
                 <li><a href="<c:url value="/admin/users"/>">Пользователи</a></li>
                 <li><a href="<c:url value="/admin/organizations"/>">Организации</a></li>
             </ul>

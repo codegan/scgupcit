@@ -1,12 +1,17 @@
 package ru.gupcit.spring.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import ru.gupcit.spring.model.Users;
+import ru.gupcit.spring.service.UsersService;
 
 import java.security.Principal;
 
@@ -15,21 +20,14 @@ import java.security.Principal;
  */
 @Controller
 public class MainController {
-
-
-
-    @RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
-
         ModelAndView model = new ModelAndView();
         if (error != null) {
             model.addObject("error", "Неправильный логин или пароль");
         }
-
-        model.setViewName("login");
-
+        model.setViewName("/index");
         return model;
-
     }
 
     @RequestMapping(value = "/error", method = RequestMethod.GET)
@@ -41,7 +39,7 @@ public class MainController {
         }else {
             model.addObject("errorMsg", "у вас нет доступа к странице");
         }
-        model.setViewName("error");
+        model.setViewName("/error");
         return model;
 
     }

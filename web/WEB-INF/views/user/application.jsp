@@ -86,6 +86,15 @@
                 <div class="modal-body">
                     <form>
                         <div class="form-group">
+                            <select class="selectpicker" title="Категория проблемы..." data-width="200px">
+                                <option>Сетевые неполадки</option>
+                                <option>Настройка АРМ</option>
+                                <option>Консультация</option>
+                                <option>Переустановка АРМ</option>
+                                <option>Установка нового рабочего места</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <select class="selectpicker" title="Выберите систему..." data-width="200px">
                                 <option>СМЭВ ЛПР</option>
                                 <option>РГУ</option>
@@ -95,11 +104,11 @@
                         </div>
                         <div class="form-group">
                             <label for="recipient-name" class="control-label">Тема:</label>
-                            <input type="text" class="form-control" id="recipient-name">
+                            <input type="text" class="form-control" id="recipient-name" placeholder="Введите тему заявки...">
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="control-label">Текст заявки:</label>
-                            <textarea class="form-control" id="message-text"></textarea>
+                            <textarea rows="20" class="form-control" id="message-text" placeholder="Введите текст заявки..."></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>

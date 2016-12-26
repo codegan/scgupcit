@@ -9,28 +9,22 @@
         <access-denied-handler error-page="/error"/>
         <intercept-url pattern="/user/*" access="ROLE_USER" />
         <intercept-url pattern="/admin/*" access="ROLE_ADMIN" />
-        <form-login login-page='/login'
+        <form-login login-page='/index'
                     default-target-url="/admin"
-                    authentication-failure-url="/login?error=true"
+                    authentication-failure-url="/index?error=true"
                     username-parameter="user_login"
                     password-parameter="password_login"
                     authentication-success-handler-ref="successHandler"/>
-        <logout logout-success-url="/login" />
+        <logout logout-success-url="/index" />
         <remember-me remember-me-parameter="password_safe"/>
     </http>
 
     <beans:bean id="jdbcGroupImpl" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-        <beans:property name="dataSource" ref="dataSource"/>
+        <beans:property name="dataSource" ref="dataSourceHibernate"/>
         <beans:property name="enableGroups" value="true"/>
         <beans:property name="enableAuthorities" value="false"/>
     </beans:bean>
     <authentication-manager>
         <authentication-provider user-service-ref="jdbcGroupImpl"/>
-        <!--<authentication-provider>
-            <user-service>
-                <user name="user" password="user" authorities="ROLE_USER" />
-                <user name="admin" password="admin" authorities="ROLE_ADMIN" />
-            </user-service>
-        </authentication-provider>-->
     </authentication-manager>
 </beans:beans>
