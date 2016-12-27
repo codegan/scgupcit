@@ -1,17 +1,12 @@
 package ru.gupcit.spring.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import ru.gupcit.spring.model.Users;
-import ru.gupcit.spring.service.UsersService;
 
 import java.security.Principal;
 
@@ -54,21 +49,27 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
-    public String getUsers(){
-        return "/admin/users";
+    public ModelAndView getUsers(ModelAndView modelAndView){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        modelAndView.addObject("user", userDetails.getUsername());
+        modelAndView.setViewName("/admin/users");
+        return modelAndView;
     }
 
     @RequestMapping(value = "/admin/organizations", method = RequestMethod.GET)
-    public String getOrganizations(){
-        return "/admin/organizations";
+    public ModelAndView getOrganizations(ModelAndView modelAndView){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        modelAndView.addObject("user", userDetails.getUsername());
+        modelAndView.setViewName("/admin/organizations");
+        return modelAndView;
     }
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
     public ModelAndView getUserApplication(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        ModelAndView model = new ModelAndView();
-        model.addObject("user", userDetails.getUsername());
-        model.setViewName("/user/application");
-        return model;
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("user", userDetails.getUsername());
+        modelAndView.setViewName("/user/application");
+        return modelAndView;
     }
 }

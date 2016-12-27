@@ -1,5 +1,10 @@
-.form form {
-    width: 300px;
-    margin: 0 auto;
-    padding-top: 20px;
+.navbar-default{
+    background-color: #f9eaea;
+    border-color: #d4cecc;
+}
+.navbar-brand{
+    margin-top: -10px;
+}
+.navbar-brand, img{
+    height: 40px;
 }

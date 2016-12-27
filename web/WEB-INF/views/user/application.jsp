@@ -10,72 +10,25 @@
 <html>
 <head>
     <title>Заявки</title>
-    <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-
-    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-*.min.js"></script>
-
 </head>
 <body>
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <span class="navbar-brand">Ситуационный центр<span style="padding-left: 4px" class="glyphicon glyphicon-ok-circle"/> </span>
-        </div>
-
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="<c:url value="/user/application"/>">Заявки </a></li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Инфо<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="#">СМЭВ-ЛПР ЧР</a></li>
-                        <li><a href="#">РГУ</a></li>
-                        <li><a href="#">Гос услуги ру</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">СЭДО "Дело"</a></li>
-                        <li><a href="#">ГАСУ ЧР</a></li>
-                    </ul>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">${user}<span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="<c:url value="/j_spring_security_logout"/>">Выход</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<!--Шапка сайта-->
+<%@include file="../includes/header.jsp"%>
 
 
-
+<!-- основная сетка-->
 <div class="row">
 <div class="col-lg-9">
     <span class="visible-lg"></span>
 </div>
 <div class="col-lg-3">
 
-    <!-- Button trigger modal -->
+    <!-- Кнопка для появления модального окна для отправки услуг -->
     <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">
         Создать заявку
     </button>
 
-    <!-- Modal -->
+    <!--Модальное окно для создания новой услуги-->
     <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -123,9 +76,5 @@
 </div>
 </div>
 </div>
-
-
-
-
 </body>
 </html>
