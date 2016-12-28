@@ -41,34 +41,26 @@ public class MainController {
 
     @RequestMapping(value = "/admin/application", method = RequestMethod.GET)
     public ModelAndView getApplication(){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userDetails.getUsername());
         modelAndView.setViewName("/admin/application");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
     public ModelAndView getUsers(ModelAndView modelAndView){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        modelAndView.addObject("user", userDetails.getUsername());
         modelAndView.setViewName("/admin/users");
         return modelAndView;
     }
 
     @RequestMapping(value = "/admin/organizations", method = RequestMethod.GET)
     public ModelAndView getOrganizations(ModelAndView modelAndView){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        modelAndView.addObject("user", userDetails.getUsername());
         modelAndView.setViewName("/admin/organizations");
         return modelAndView;
     }
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
     public ModelAndView getUserApplication(){
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("user", userDetails.getUsername());
         modelAndView.setViewName("/user/application");
         return modelAndView;
     }
