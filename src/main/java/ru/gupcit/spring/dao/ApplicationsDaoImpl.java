@@ -3,6 +3,8 @@ package ru.gupcit.spring.dao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import ru.gupcit.spring.model.Applications;
 
 import javax.sql.DataSource;
@@ -22,7 +24,8 @@ public class ApplicationsDaoImpl implements ApplicationsDao{
     }
 
     public List<Applications> getAllApplications(){
-        return jdbcTemplate.query("select * from scgupcittest.applications",new RowMapper<Applications>(){
+
+        return jdbcTemplate.query("select * from scgupcittest.applications ORDER BY id DESC",new RowMapper<Applications>(){
             public Applications mapRow(ResultSet rs, int row) throws SQLException {
                 Applications applications = new Applications();
                 applications.setId(rs.getInt(1));
