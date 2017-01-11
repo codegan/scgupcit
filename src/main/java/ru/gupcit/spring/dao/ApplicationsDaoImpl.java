@@ -24,17 +24,46 @@ public class ApplicationsDaoImpl implements ApplicationsDao{
     }
 
     public List<Applications> getAllApplications(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String sql = "SELECT scgupcit.users.username name, scgupcit.organizations.name orgname, scgupcit.categories.name cgname, scgupcit.system.name stname, scgupcit.applications.id id, scgupcit.applications.text text FROM "+
+                "scgupcit.users   INNER JOIN scgupcit.applications on (scgupcit.users.id=scgupcit.applications.id_user)"+
+                "INNER JOIN scgupcit.organizations on (scgupcit.organizations.id = scgupcit.users.id_organization)"+
+                "INNER JOIN scgupcit.categories on (scgupcit.categories.id = scgupcit.applications.id_categories)"+
+                "INNER JOIN scgupcit.system on (scgupcit.system.id = scgupcit.applications.id_system)";
+        return  jdbcTemplate.query(sql,
+                new RowMapper<Applications>() {
+                    public Applications mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Applications app = new Applications();
+                        app.setId(rs.getInt("id"));
+                        app.setAuthor(rs.getString("name"));
+                        app.setOrganizations(rs.getString("orgname"));
+                        app.setCategory(rs.getString("cgname"));
+                        app.setSystem(rs.getString("stname"));
+                        app.setText(rs.getString("text"));
+                        return app;
+                    }
+                });
 
-        return jdbcTemplate.query("select * from scgupcittest.applications ORDER BY id DESC",new RowMapper<Applications>(){
-            public Applications mapRow(ResultSet rs, int row) throws SQLException {
-                Applications applications = new Applications();
-                applications.setId(rs.getInt(1));
-                applications.setAuthor(rs.getString(2));
-                applications.setCategory(rs.getString(3));
-                applications.setSystem(rs.getString(4));
-                applications.setText(rs.getString(5));
-                return applications;
-            }
-        });
+    }
+    public List<Applications> getApplicationsFromUser(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        String sql = "SELECT scgupcit.categories.name cgname, scgupcit.system.name stname, scgupcit.applications.id id, scgupcit.applications.text text FROM "+
+                "scgupcit.users INNER JOIN scgupcit.applications on (scgupcit.users.id=scgupcit.applications.id_user)"+
+                "INNER JOIN scgupcit.categories on (scgupcit.categories.id = scgupcit.applications.id_categories)"+
+                "INNER JOIN scgupcit.system on (scgupcit.system.id = scgupcit.applications.id_system)"+
+                "WHERE scgupcit.users.username = ?";
+
+        return  jdbcTemplate.query(sql, new Object[]{userDetails.getUsername()},
+                new RowMapper<Applications>() {
+                    public Applications mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Applications app = new Applications();
+                        app.setId(rs.getInt("id"));
+                        app.setCategory(rs.getString("cgname"));
+                        app.setSystem(rs.getString("stname"));
+                        app.setText(rs.getString("text"));
+                        return app;
+                    }
+                });
+
     }
 }

@@ -19,14 +19,18 @@
     <div class="col-lg-9">
         <table class="table table-hover">
             <tr>
-                <th>Автор</th>
+                <td>ИД</td>
+                <th>ФИО</th>
+                <td>Организация</td>
                 <th>Категория</th>
                 <th>Система</th>
                 <th>Текст заявки</th>
             </tr>
             <c:forEach var="emp" items="${list}">
                 <tr>
+                    <td>${emp.id}</td>
                     <td>${emp.author}</td>
+                    <td>${emp.organizations}</td>
                     <td>${emp.category}</td>
                     <td>${emp.system}</td>
                     <td>${emp.text}</td>

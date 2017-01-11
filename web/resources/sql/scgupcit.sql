@@ -35,7 +35,7 @@ CREATE TABLE `applications` (
   CONSTRAINT `fk_applications_categories` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_system` FOREIGN KEY (`id_system`) REFERENCES `system` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +44,7 @@ CREATE TABLE `applications` (
 
 LOCK TABLES `applications` WRITE;
 /*!40000 ALTER TABLE `applications` DISABLE KEYS */;
-INSERT INTO `applications` VALUES (1,2,2,2,'текст тестовой заявки');
+INSERT INTO `applications` VALUES (1,2,2,2,'hello'),(2,2,2,3,'hello'),(3,3,4,5,'Дополнительное описание арм не работает не могу зайти уже второй день!!');
 /*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,7 +62,7 @@ CREATE TABLE `authorities` (
   PRIMARY KEY (`id`),
   KEY `fk_authorities_users_idx` (`id_user`),
   CONSTRAINT `fk_authorities_users` FOREIGN KEY (`id_user`) REFERENCES `authorities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -71,7 +71,7 @@ CREATE TABLE `authorities` (
 
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
-INSERT INTO `authorities` VALUES (1,'ROLE_ADMIN',1),(2,'ROLE_USER',2);
+INSERT INTO `authorities` VALUES (1,'ROLE_ADMIN',1),(2,'ROLE_USER',2),(3,'ROLE_USER',3);
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,7 +110,7 @@ CREATE TABLE `organizations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -119,7 +119,7 @@ CREATE TABLE `organizations` (
 
 LOCK TABLES `organizations` WRITE;
 /*!40000 ALTER TABLE `organizations` DISABLE KEYS */;
-INSERT INTO `organizations` VALUES (1,'Министерство транспорта и связи');
+INSERT INTO `organizations` VALUES (1,'Министерство транспорта и связи'),(2,'Министерство труда и занятости населения');
 /*!40000 ALTER TABLE `organizations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,7 +166,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_users_organizations_idx` (`id_organization`),
   CONSTRAINT `fk_users_organizations` FOREIGN KEY (`id_organization`) REFERENCES `organizations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -175,7 +175,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1),(2,'user','user',1,'Testov','Test','Testovich',1);
+INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1),(2,'user','user',1,'Testov','Test','Testovich',1),(3,'zaur','zaur',2,'Эльбукаев','Заур','Хусейнович',1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -188,4 +188,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-10 16:27:31
+-- Dump completed on 2017-01-11 17:46:44

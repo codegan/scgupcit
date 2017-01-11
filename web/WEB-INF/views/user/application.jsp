@@ -20,6 +20,22 @@
 <div class="row">
 <div class="col-lg-9">
     <span class="visible-lg"></span>
+    <table class="table table-hover">
+        <tr>
+            <td>ИД</td>
+            <th>Категория</th>
+            <th>Система</th>
+            <th>Текст заявки</th>
+        </tr>
+        <c:forEach var="emp" items="${app}">
+            <tr>
+                <td>${emp.id}</td>
+                <td>${emp.category}</td>
+                <td>${emp.system}</td>
+                <td>${emp.text}</td>
+            </tr>
+        </c:forEach>
+    </table>
 </div>
 <div class="col-lg-3">
 

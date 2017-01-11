@@ -6,6 +6,7 @@ package ru.gupcit.spring.model;
 public class Applications {
     private int id;
     private String Author;
+    private String Organizations;
     private String Category;
     private String System;
     private String Text;
@@ -13,9 +14,10 @@ public class Applications {
     public Applications() {
     }
 
-    public Applications(int id, String author, String category, String system, String text) {
+    public Applications(int id, String author, String organizations, String category, String system, String text) {
         this.id = id;
         Author = author;
+        Organizations = organizations;
         Category = category;
         System = system;
         Text = text;
@@ -35,6 +37,14 @@ public class Applications {
 
     public void setAuthor(String author) {
         Author = author;
+    }
+
+    public String getOrganizations() {
+        return Organizations;
+    }
+
+    public void setOrganizations(String organizations) {
+        Organizations = organizations;
     }
 
     public String getCategory() {

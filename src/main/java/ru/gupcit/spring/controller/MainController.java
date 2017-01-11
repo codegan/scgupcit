@@ -68,8 +68,7 @@ public class MainController {
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
     public ModelAndView getUserApplication(){
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("/user/application");
-        return modelAndView;
+        List<Applications> applications = applicationsDao.getApplicationsFromUser();
+        return new ModelAndView("/user/application", "app", applications);
     }
 }
