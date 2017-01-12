@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -67,8 +69,15 @@ public class MainController {
     }
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
-    public ModelAndView getUserApplication(){
+    public String  getUserApplication(Model model){
         List<Applications> applications = applicationsDao.getApplicationsFromUser();
-        return new ModelAndView("/user/application", "app", applications);
+        model.addAttribute("app", applications);
+        model.addAttribute("setApp", new Applications());
+        return "/user/application";
+    }
+    @RequestMapping(value= "/user/application/add", method = RequestMethod.POST)
+    public String addBook(@ModelAttribute("setapp") Applications applications){
+       applicationsDao.setApplication(applications);
+        return "redirect:/user/application";
     }
 }

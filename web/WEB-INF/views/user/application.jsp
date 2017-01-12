@@ -7,6 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <html>
 <head>
     <title>Заявки</title>
@@ -14,8 +17,6 @@
 <body>
 <!--Шапка сайта-->
 <%@include file="../includes/header.jsp"%>
-
-
 <!-- основная сетка-->
 <div class="row">
 <div class="col-lg-9">
@@ -28,7 +29,7 @@
             <th>Текст заявки</th>
         </tr>
         <c:forEach var="emp" items="${app}">
-            <tr>
+            <tr onclick="window.open('http://www.foo.com')">
                 <td>${emp.id}</td>
                 <td>${emp.category}</td>
                 <td>${emp.system}</td>
@@ -53,7 +54,8 @@
                     <h4 class="modal-title" id="myModalLabel">Новая заявка</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+
+                    <form:form action="/scgupcit/user/application/add" commandName="setApp">
                         <div class="form-group">
                             <select class="selectpicker" title="Категория проблемы..." data-width="200px">
                                 <option>Сетевые неполадки</option>
@@ -72,18 +74,14 @@
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="recipient-name" class="control-label">Тема:</label>
-                            <input type="text" class="form-control" id="recipient-name" placeholder="Введите тему заявки...">
-                        </div>
-                        <div class="form-group">
                             <label for="message-text" class="control-label">Текст заявки:</label>
-                            <textarea rows="20" class="form-control" id="message-text" placeholder="Введите текст заявки..."></textarea>
+                            <textarea name="text" rows="20" class="form-control" id="message-text" placeholder="Введите текст заявки..."></textarea>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Отмена</button>
-                            <button type="button" class="btn btn-primary">Отправить</button>
+                            <button type="submit" class="btn btn-primary">Отправить</button>
                         </div>
-                    </form>
+                    </form:form>
                 </div>
 
             </div>

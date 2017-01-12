@@ -9,4 +9,6 @@ import java.util.List;
 
 public interface ApplicationsDao {
     public List getAllApplications();
+    public List getApplicationsFromUser();
+    public void setApplication(Applications application);
 }

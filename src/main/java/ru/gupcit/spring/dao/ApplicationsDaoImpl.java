@@ -66,4 +66,10 @@ public class ApplicationsDaoImpl implements ApplicationsDao{
                 });
 
     }
+
+    public void setApplication(Applications application) {
+        String sql = "INSERT INTO scgupcit.applications " +
+                "(id_user, id_categories, id_system, text) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, new Object[] {"3" ,"2","2",application.getText()});
+}
 }
