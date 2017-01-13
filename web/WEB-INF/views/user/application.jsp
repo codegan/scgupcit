@@ -22,14 +22,17 @@
 <div class="col-lg-9">
     <span class="visible-lg"></span>
     <table class="table table-hover">
+        <thead>
         <tr>
             <td>ИД</td>
             <th>Категория</th>
             <th>Система</th>
             <th>Текст заявки</th>
         </tr>
+        </thead>
+
         <c:forEach var="emp" items="${app}">
-            <tr onclick="window.open('http://www.foo.com')">
+            <tr>
                 <td>${emp.id}</td>
                 <td>${emp.category}</td>
                 <td>${emp.system}</td>

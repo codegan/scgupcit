@@ -24,7 +24,12 @@ public class MainController {
     @Autowired
     ApplicationsDaoImpl applicationsDao;
 
-
+    @RequestMapping(value = {"/test" }, method = RequestMethod.GET)
+    public ModelAndView test() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("/test");
+        return model;
+    }
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
