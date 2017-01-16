@@ -14,13 +14,17 @@
 <body>
 <!--Шапка сайта-->
 <%@include file="../includes/headeradmin.jsp"%>
-<h1>Список обращений</h1>
+
 <div class="row">
     <div class="col-lg-9">
-        <table class="table table-hover">
+        <div class="panel panel-info">
+            <div class="panel-heading">Весь список заявок</div>
+            <div class="panel-body">
+            <table class="table table-hover">
             <tr>
                 <td>ИД</td>
                 <th>ФИО</th>
+                <th>Телефон</th>
                 <td>Организация</td>
                 <th>Категория</th>
                 <th>Система</th>
@@ -29,14 +33,17 @@
             <c:forEach var="emp" items="${list}">
                 <tr>
                     <td>${emp.id}</td>
-                    <td>${emp.author}</td>
+                    <td>${emp.fio}</td>
+                    <td>${emp.phone}</td>
                     <td>${emp.organizations}</td>
-                    <td>${emp.category}</td>
-                    <td>${emp.system}</td>
+                    <td>${emp.category_name}</td>
+                    <td>${emp.system_name}</td>
                     <td>${emp.text}</td>
                 </tr>
             </c:forEach>
         </table>
+                </div>
+            </div>
     </div>
     <div class="col-lg-3">
         Фильтр

@@ -29,8 +29,15 @@
     <!-- declare spring DAO -->
     <bean id="applicationsDao" class="ru.gupcit.spring.dao.ApplicationsDaoImpl">
         <property name="template" ref="jdbcTemplate"/>
+        <property name="usersDao" ref="usersDao"/>
     </bean>
     <bean id="usersDao" class="ru.gupcit.spring.dao.UsersDao">
+        <property name="template" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="categoriesDao" class="ru.gupcit.spring.dao.CategoriesDaoImpl">
+        <property name="template" ref="jdbcTemplate"/>
+    </bean>
+    <bean id="systemsDao" class="ru.gupcit.spring.dao.SystemsDaoImpl">
         <property name="template" ref="jdbcTemplate"/>
     </bean>
     <!--service-->

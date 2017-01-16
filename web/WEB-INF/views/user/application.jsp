@@ -21,6 +21,9 @@
 <div class="row">
 <div class="col-lg-9">
     <span class="visible-lg"></span>
+    <div class="panel panel-info">
+        <div class="panel-heading">Отправленные заявки</div>
+        <div class="panel-body">
     <table class="table table-hover">
         <thead>
         <tr>
@@ -34,12 +37,14 @@
         <c:forEach var="emp" items="${app}">
             <tr>
                 <td>${emp.id}</td>
-                <td>${emp.category}</td>
-                <td>${emp.system}</td>
+                <td>${emp.category_name}</td>
+                <td>${emp.system_name}</td>
                 <td>${emp.text}</td>
             </tr>
         </c:forEach>
     </table>
+            </div>
+        </div>
 </div>
 <div class="col-lg-3">
 
@@ -60,21 +65,16 @@
 
                     <form:form action="/scgupcit/user/application/add" commandName="setApp">
                         <div class="form-group">
-                            <select class="selectpicker" title="Категория проблемы..." data-width="200px">
-                                <option>Сетевые неполадки</option>
-                                <option>Настройка АРМ</option>
-                                <option>Консультация</option>
-                                <option>Переустановка АРМ</option>
-                                <option>Установка нового рабочего места</option>
-                            </select>
+                            <form:select cssClass="selectpicker" title="Категория проблемы..." path="category_id" size="200px">
+                                <form:options items="${categ}" itemValue="id" itemLabel="name" />
+                            </form:select>
                         </div>
                         <div class="form-group">
-                            <select class="selectpicker" title="Выберите систему..." data-width="200px">
-                                <option>СМЭВ ЛПР</option>
-                                <option>РГУ</option>
-                                <option>ГАСУ ЧР</option>
-                                <option>CЭДО ЧР</option>
-                            </select>
+                            <div class="form-group">
+                                <form:select cssClass="selectpicker" title="Выберите систему..." path="system_id" size="200px">
+                                    <form:options items="${syst}" itemValue="id" itemLabel="name" />
+                                </form:select>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="message-text" class="control-label">Текст заявки:</label>

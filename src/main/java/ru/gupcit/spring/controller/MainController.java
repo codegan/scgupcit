@@ -11,7 +11,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import ru.gupcit.spring.dao.ApplicationsDaoImpl;
+import ru.gupcit.spring.dao.CategoriesDaoImpl;
+import ru.gupcit.spring.dao.SystemsDaoImpl;
 import ru.gupcit.spring.model.Applications;
+import ru.gupcit.spring.model.Categoryes;
+import ru.gupcit.spring.model.Systems;
 
 import java.security.Principal;
 import java.util.List;
@@ -21,8 +25,13 @@ import java.util.List;
  */
 @Controller
 public class MainController {
+
     @Autowired
     ApplicationsDaoImpl applicationsDao;
+    @Autowired
+    CategoriesDaoImpl categoriesDao;
+    @Autowired
+    SystemsDaoImpl systemsDao;
 
     @RequestMapping(value = {"/test" }, method = RequestMethod.GET)
     public ModelAndView test() {
@@ -76,7 +85,11 @@ public class MainController {
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
     public String  getUserApplication(Model model){
         List<Applications> applications = applicationsDao.getApplicationsFromUser();
+        List<Categoryes> categoryes = categoriesDao.getAllCategoryes();
+        List<Systems> systems = systemsDao.getAllSystemses();
         model.addAttribute("app", applications);
+        model.addAttribute("categ", categoryes);
+        model.addAttribute("syst", systems);
         model.addAttribute("setApp", new Applications());
         return "/user/application";
     }

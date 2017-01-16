@@ -5,23 +5,18 @@ package ru.gupcit.spring.model;
  */
 public class Applications {
     private int id;
-    private String Author;
+    private String Fio;
     private String Organizations;
-    private String Category;
-    private String System;
+    private int Category_id;
+    private String Category_name;
+    private int System_id;
+    private String System_name;
     private String Text;
+    private String Phone;
 
     public Applications() {
     }
 
-    public Applications(int id, String author, String organizations, String category, String system, String text) {
-        this.id = id;
-        Author = author;
-        Organizations = organizations;
-        Category = category;
-        System = system;
-        Text = text;
-    }
 
     public int getId() {
         return id;
@@ -31,12 +26,12 @@ public class Applications {
         this.id = id;
     }
 
-    public String getAuthor() {
-        return Author;
+    public String getFio() {
+        return Fio;
     }
 
-    public void setAuthor(String author) {
-        Author = author;
+    public void setFio(String fio) {
+        Fio = fio;
     }
 
     public String getOrganizations() {
@@ -47,20 +42,36 @@ public class Applications {
         Organizations = organizations;
     }
 
-    public String getCategory() {
-        return Category;
+    public int getCategory_id() {
+        return Category_id;
     }
 
-    public void setCategory(String category) {
-        Category = category;
+    public void setCategory_id(int category_id) {
+        Category_id = category_id;
     }
 
-    public String getSystem() {
-        return System;
+    public String getCategory_name() {
+        return Category_name;
     }
 
-    public void setSystem(String system) {
-        System = system;
+    public void setCategory_name(String category_name) {
+        Category_name = category_name;
+    }
+
+    public String getSystem_name() {
+        return System_name;
+    }
+
+    public void setSystem_name(String system_name) {
+        System_name = system_name;
+    }
+
+    public int getSystem_id() {
+        return System_id;
+    }
+
+    public void setSystem_id(int system_id) {
+        System_id = system_id;
     }
 
     public String getText() {
@@ -69,5 +80,13 @@ public class Applications {
 
     public void setText(String text) {
         Text = text;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 }
