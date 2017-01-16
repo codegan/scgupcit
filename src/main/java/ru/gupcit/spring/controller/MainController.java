@@ -64,10 +64,13 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/application", method = RequestMethod.GET)
-    public ModelAndView getApplication(){
+    public String getApplication(Model model){
 
         List<Applications> allApplications = applicationsDao.getAllApplications();
-        return new ModelAndView("/admin/application","list",allApplications);
+        int size = allApplications.size();
+        model.addAttribute("stat", size);
+        model.addAttribute("list", allApplications);
+        return "/admin/application";
     }
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)

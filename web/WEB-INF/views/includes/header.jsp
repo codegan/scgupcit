@@ -43,12 +43,13 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Инфо<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">СМЭВ-ЛПР ЧР</a></li>
-                        <li><a href="#">РГУ</a></li>
-                        <li><a href="#">Гос услуги ру</a></li>
+                        <li><a href="#">Система межведомственного электронного взаимодействия</a></li>
+                        <li><a href="#">Региональный портал государственных услуг</a> </li>
+                        <li><a href="#">Реестр государственных услуг</a></li>
+                        <li><a href="#">Портал государственных и муниципальных услуг</a></li>
+                        <li><a href="#">Система электронного документооборота (СЭД) «ДЕЛО»</a></li>
+                        <li><a href="#">Государственная автоматизированная система Управление</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#">СЭДО "Дело"</a></li>
-                        <li><a href="#">ГАСУ ЧР</a></li>
                     </ul>
                 </li>
             </ul>
