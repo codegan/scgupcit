@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <span style="margin-top: -5px" class="navbar-brand">Ситуационный центр<br><h6 style="margin-top: 0px">электронного правительства ЧР</h6> </span>
+            <span style="margin-top: -5px" class="navbar-brand">Центр информационных технологии<br><h6 style="margin-top: 0px">Чеченской Республики</h6> </span>
         </div>
 
             <ul class="nav navbar-nav navbar-right">

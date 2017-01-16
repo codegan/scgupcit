@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Ситуационный центр электронного правительства ЧР</title>
+    <title>Центр информационных технологии ЧР</title>
 </head>
 <body>
 <%@include file="includes/headerauth.jsp"%>
