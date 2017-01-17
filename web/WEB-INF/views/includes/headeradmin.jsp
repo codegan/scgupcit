@@ -37,9 +37,8 @@
 
         <div style="" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a href="<c:url value="/admin/application"/>">Заявки <span class="badge">4</span></a></li>
-                <li><a href="<c:url value="/admin/users"/>">Пользователи</a></li>
-                <li><a href="<c:url value="/admin/organizations"/>">Организации</a></li>
+                <li><a href="<c:url value="/admin/application"/>">Заявки<span class="badge">4</span></a></li>
+                <li><a href="<c:url value="/admin/administration"/>">Администрирование</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">

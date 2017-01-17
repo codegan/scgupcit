@@ -8,284 +8,156 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <script type="text/javascript" src="http://gupcit.ru/jquery-latest.js"></script>
-    <script type="text/javascript" src="http://gupcit.ru/jquery.tablesorter.js"></script>
-    <script type="text/javascript" src="http://gupcit.ru/jquery.tablesorter.pager.js"></script>
-    <script type="text/javascript" src="http://gupcit.ru/jquery-3.1.1.js"></script>
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style type="text/css">
+        body { font-family:Arial, Helvetica, Sans-Serif; font-size:0.8em;}
+        #report { border-collapse:collapse;}
+        #report h4 { margin:0px; padding:0px;}
+        #report img { float:right;}
+        #report ul { margin:10px 0 10px 40px; padding:0px;}
+        #report th { background:#7CB8E2 url(/resources/img/table/header_bkg.png) repeat-x scroll center left; color:#fff; padding:7px 15px; text-align:left;}
+        #report td { background:#C7DDEE none repeat-x scroll center left; color:#000; padding:7px 15px; }
+        #report tr.odd td { background:#fff url(/resources/img/table/row_bkg.png) repeat-x scroll center left; cursor:pointer; }
+        #report div.arrow { background:transparent url(/resources/img/table/arrows.png) no-repeat scroll 0px -16px; width:16px; height:16px; display:block;}
+        #report div.up { background-position:0px 0px;}
+    </style>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
     <script type="text/javascript">
-        $(document).ready(function() {
-            $("#mytable")
-                    .tablesorter({widthFixed: true})
-                    .tablesorterPager({container: $("#pager")});
+        $(document).ready(function(){
+            $("#report tr:odd").addClass("odd");
+            $("#report tr:not(.odd)").hide();
+            $("#report tr:first-child").show();
+
+            $("#report tr.odd").click(function(){
+                $(this).next("tr").toggle();
+                $(this).find(".arrow").toggleClass("up");
+            });
+            //$("#report").jExpand();
         });
     </script>
 </head>
 <body>
 
-<table id="mytable" cellspacing="1" class="tablesorter">
-    <thead>
+<h1>JankoAtWarpSpeed demos</h1>
+<p>Demo for <a href="http://www.jankoatwarpspeed.com/post/2009/07/19/Expand-table-rows-with-jQuery-jExpand-plugin.aspx">Expand table rows with jQuery - jExpand plugin</a></p>
+<table id="report">
     <tr>
-        <th>Name</th>
-        <th>Major</th>
-        <th>Sex</th>
-        <th>English</th>
-        <th>Japanese</th>
-        <th>Calculus</th>
-        <th>Geometry</th>
-    </tr>
-    </thead>
-    <tfoot>
-    <tr>
-        <th>Name</th>
-        <th>Major</th>
-        <th>Sex</th>
-        <th>English</th>
-        <th>Japanese</th>
-        <th>Calculus</th>
-        <th>Geometry</th>
-    </tr>
-    </tfoot>
-    <tbody>
-    <tr>
-        <td>Student01</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>80</td>
-        <td>70</td>
-        <td>75</td>
-        <td>80</td>
+        <th>Country</th>
+        <th>Population</th>
+        <th>Area</th>
+        <th>Official languages</th>
+        <th></th>
     </tr>
     <tr>
-        <td>Student02</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>90</td>
-        <td>88</td>
-        <td>100</td>
-        <td>90</td>
+        <td>United States of America</td>
+        <td>306,939,000</td>
+        <td>9,826,630 km2</td>
+        <td>English</td>
+        <td><div class="arrow"></div></td>
     </tr>
     <tr>
-        <td>Student03</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>85</td>
-        <td>95</td>
-        <td>80</td>
-        <td>85</td>
+        <td colspan="5">
+            <img src="/resources/img/table/125px-Flag_of_the_United_States.svg.png" alt="Flag of USA" />
+            <h4>Additional information</h4>
+            <ul>
+                <li><a href="http://en.wikipedia.org/wiki/Usa">USA on Wikipedia</a></li>
+                <li><a href="http://nationalatlas.gov/">National Atlas of the United States</a></li>
+                <li><a href="http://www.nationalcenter.org/HistoricalDocuments.html">Historical Documents</a></li>
+            </ul>
+        </td>
     </tr>
     <tr>
-        <td>Student04</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>60</td>
-        <td>55</td>
-        <td>100</td>
-        <td>100</td>
+        <td>United Kingdom </td>
+        <td>61,612,300</td>
+        <td>244,820 km2</td>
+        <td>English</td>
+        <td><div class="arrow"></div></td>
     </tr>
     <tr>
-        <td>Student05</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>68</td>
-        <td>80</td>
-        <td>95</td>
-        <td>80</td>
+        <td colspan="5">
+            <img src="/resources/img/table/125px-Flag_of_the_United_Kingdom.svg.png" alt="Flag of UK" />
+            <h4>Additional information</h4>
+            <ul>
+                <li><a href="http://en.wikipedia.org/wiki/United_kingdom">UK on Wikipedia</a></li>
+                <li><a href="http://www.visitbritain.com/">Official tourist guide to Britain</a></li>
+                <li><a href="http://www.statistics.gov.uk/StatBase/Product.asp?vlnk=5703">Official
+                    Yearbook of the United Kingdom</a></li>
+            </ul>
+
+        </td>
     </tr>
     <tr>
-        <td>Student06</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>100</td>
-        <td>99</td>
-        <td>100</td>
-        <td>90</td>
+        <td>India</td>
+        <td>1,147,995,904</td>
+        <td>3,287,240 km2</td>
+        <td>Hindi, English</td>
+        <td><div class="arrow"></div></td>
     </tr>
     <tr>
-        <td>Student07</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>85</td>
-        <td>68</td>
-        <td>90</td>
-        <td>90</td>
+        <td colspan="5">
+            <img src="/resources/img/table/125px-Flag_of_India.svg.png" alt="Flag of India" />
+            <h4>Additional information</h4>
+            <ul>
+                <li><a href="http://en.wikipedia.org/wiki/India">India on Wikipedia</a></li>
+                <li><a href="http://india.gov.in/">Government of India</a></li>
+                <li><a href="http://wikitravel.org/en/India">India travel guide</a></li>
+            </ul>
+
+        </td>
     </tr>
     <tr>
-        <td>Student08</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>100</td>
-        <td>90</td>
-        <td>90</td>
-        <td>85</td>
+        <td>Canada</td>
+        <td>33,718,000</td>
+        <td>9,984,670 km2</td>
+        <td>English, French</td>
+        <td><div class="arrow"></div></td>
     </tr>
     <tr>
-        <td>Student09</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>80</td>
-        <td>50</td>
-        <td>65</td>
-        <td>75</td>
+        <td colspan="5">
+            <img src="/resources/img/table/125px-Flag_of_Canada.svg.png" alt="Flag of Canada" />
+            <h4>Additional information</h4>
+            <ul>
+                <li><a href="http://en.wikipedia.org/wiki/Canada">Canada on Wikipedia</a></li>
+                <li><a href="http://atlas.gc.ca/site/index.html" >Official
+                    Government of Canada online Atlas of Canada</a></li>
+                <li><a href="http://wikitravel.org/en/Canada">Canada travel guide</a></li>
+            </ul>
+        </td>
     </tr>
     <tr>
-        <td>Student10</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>85</td>
-        <td>100</td>
-        <td>100</td>
-        <td>90</td>
+        <td>Germany</td>
+        <td>82,060,000</td>
+        <td>357,021 km2</td>
+        <td>German</td>
+        <td><div class="arrow"></div></td>
     </tr>
     <tr>
-        <td>Student11</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>86</td>
-        <td>85</td>
-        <td>100</td>
-        <td>100</td>
+        <td colspan="5">
+            <img src="/resources/img/table/125px-Flag_of_Germany.svg.png" alt="Flag of Germany" />
+            <h4>Additional information</h4>
+            <ul>
+                <li><a href="http://en.wikipedia.org/wiki/Germany">Germany on Wikipedia</a></li>
+                <li><a href="http://www.deutschland.de/home.php?lang=2">Deutschland.de Official Germany portal</a></li>
+                <li><a href="http://www.cometogermany.com/">Germany Travel Info</a></li>
+            </ul>
+        </td>
     </tr>
-    <tr>
-        <td>Student12</td>
-        <td>Mathematics</td>
-        <td>female</td>
-        <td>100</td>
-        <td>75</td>
-        <td>70</td>
-        <td>85</td>
-    </tr>
-    <tr>
-        <td>Student13</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>100</td>
-        <td>80</td>
-        <td>100</td>
-        <td>90</td>
-    </tr>
-    <tr>
-        <td>Student14</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>50</td>
-        <td>45</td>
-        <td>55</td>
-        <td>90</td>
-    </tr>
-    <tr>
-        <td>Student15</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>95</td>
-        <td>35</td>
-        <td>100</td>
-        <td>90</td>
-    </tr>
-    <tr>
-        <td>Student16</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>100</td>
-        <td>50</td>
-        <td>30</td>
-        <td>70</td>
-    </tr>
-    <tr>
-        <td>Student17</td>
-        <td>Languages</td>
-        <td>female</td>
-        <td>80</td>
-        <td>100</td>
-        <td>55</td>
-        <td>65</td>
-    </tr>
-    <tr>
-        <td>Student18</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>30</td>
-        <td>49</td>
-        <td>55</td>
-        <td>75</td>
-    </tr>
-    <tr>
-        <td>Student19</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>68</td>
-        <td>90</td>
-        <td>88</td>
-        <td>70</td>
-    </tr>
-    <tr>
-        <td>Student20</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>40</td>
-        <td>45</td>
-        <td>40</td>
-        <td>80</td>
-    </tr>
-    <tr>
-        <td>Student21</td>
-        <td>Languages</td>
-        <td>male</td>
-        <td>50</td>
-        <td>45</td>
-        <td>100</td>
-        <td>100</td>
-    </tr>
-    <tr>
-        <td>Student22</td>
-        <td>Mathematics</td>
-        <td>male</td>
-        <td>100</td>
-        <td>99</td>
-        <td>100</td>
-        <td>90</td>
-    </tr>
-    <tr><td>Student23</td><td>Mathematics</td><td>male</td><td>82</td><td>77</td><td>0</td><td>79</td></tr>
-    <tr><td>Student24</td><td>Languages</td><td>female</td><td>100</td><td>91</td><td>13</td><td>82</td></tr>
-    <tr><td>Student25</td><td>Mathematics</td><td>male</td><td>22</td><td>96</td><td>82</td><td>53</td></tr>
-    <tr><td>Student26</td><td>Languages</td><td>female</td><td>37</td><td>29</td><td>56</td><td>59</td></tr>
-    <tr><td>Student27</td><td>Mathematics</td><td>male</td><td>86</td><td>82</td><td>69</td><td>23</td></tr>
-    <tr><td>Student28</td><td>Languages</td><td>female</td><td>44</td><td>25</td><td>43</td><td>1</td></tr>
-    <tr><td>Student29</td><td>Mathematics</td><td>male</td><td>77</td><td>47</td><td>22</td><td>38</td></tr>
-    <tr><td>Student30</td><td>Languages</td><td>female</td><td>19</td><td>35</td><td>23</td><td>10</td></tr>
-    <tr><td>Student31</td><td>Mathematics</td><td>male</td><td>90</td><td>27</td><td>17</td><td>50</td></tr>
-    <tr><td>Student32</td><td>Languages</td><td>female</td><td>60</td><td>75</td><td>33</td><td>38</td></tr>
-    <tr><td>Student33</td><td>Mathematics</td><td>male</td><td>4</td><td>31</td><td>37</td><td>15</td></tr>
-    <tr><td>Student34</td><td>Languages</td><td>female</td><td>77</td><td>97</td><td>81</td><td>44</td></tr>
-    <tr><td>Student35</td><td>Mathematics</td><td>male</td><td>5</td><td>81</td><td>51</td><td>95</td></tr>
-    <tr><td>Student36</td><td>Languages</td><td>female</td><td>70</td><td>61</td><td>70</td><td>94</td></tr>
-    <tr><td>Student37</td><td>Mathematics</td><td>male</td><td>60</td><td>3</td><td>61</td><td>84</td></tr>
-    <tr><td>Student38</td><td>Languages</td><td>female</td><td>63</td><td>39</td><td>0</td><td>11</td></tr>
-    <tr><td>Student39</td><td>Mathematics</td><td>male</td><td>50</td><td>46</td><td>32</td><td>38</td></tr>
-    <tr><td>Student40</td><td>Languages</td><td>female</td><td>51</td><td>75</td><td>25</td><td>3</td></tr>
-    <tr><td>Student41</td><td>Mathematics</td><td>male</td><td>43</td><td>34</td><td>28</td><td>78</td></tr>
-    <tr><td>Student42</td><td>Languages</td><td>female</td><td>11</td><td>89</td><td>60</td><td>95</td></tr>
-    <tr><td>Student43</td><td>Mathematics</td><td>male</td><td>48</td><td>92</td><td>18</td><td>88</td></tr>
-    <tr><td>Student44</td><td>Languages</td><td>female</td><td>82</td><td>2</td><td>59</td><td>73</td></tr>
-    <tr><td>Student45</td><td>Mathematics</td><td>male</td><td>91</td><td>73</td><td>37</td><td>39</td></tr>
-    <tr><td>Student46</td><td>Languages</td><td>female</td><td>4</td><td>8</td><td>12</td><td>10</td></tr>
-    <tr><td>Student47</td><td>Mathematics</td><td>male</td><td>89</td><td>10</td><td>6</td><td>11</td></tr>
-    <tr><td>Student48</td><td>Languages</td><td>female</td><td>90</td><td>32</td><td>21</td><td>18</td></tr>
-    <tr><td>Student49</td><td>Mathematics</td><td>male</td><td>42</td><td>49</td><td>49</td><td>72</td></tr>
-    <tr><td>Student50</td><td>Languages</td><td>female</td><td>56</td><td>37</td><td>67</td><td>54</td></tr>
-    </tbody>
 </table>
+<em>* Information taken from Wikipedia</em>
+<script type="application/javascript">
+(function($){
+$.fn.jExpand = function(){
+var element = this;
 
+$(element).find("tr:odd").addClass("odd");
+$(element).find("tr:not(.odd)").hide();
+$(element).find("tr:first-child").show();
 
-<form>
-    <div id="pager" class="pager">
-        <img src="/images/table/first.png" class="first"/>
-        <img src="/images/table/prev.png" class="prev"/>
-        <input type="text" class="pagedisplay"/>
-        <img src="/images/table/next.png" class="next"/>
-        <img src="/images/table/last.png" class="last"/>
-        <input type="hidden" class="pagesize" value="25" />
-    </div>
-</form>
+$(element).find("tr.odd").click(function() {
+$(this).next("tr").toggle();
+});
+
+}
+})(jQuery);
+</script>
 </body>
 </html>

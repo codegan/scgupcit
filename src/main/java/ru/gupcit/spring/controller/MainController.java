@@ -73,15 +73,9 @@ public class MainController {
         return "/admin/application";
     }
 
-    @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/administration", method = RequestMethod.GET)
     public ModelAndView getUsers(ModelAndView modelAndView){
-        modelAndView.setViewName("/admin/users");
-        return modelAndView;
-    }
-
-    @RequestMapping(value = "/admin/organizations", method = RequestMethod.GET)
-    public ModelAndView getOrganizations(ModelAndView modelAndView){
-        modelAndView.setViewName("/admin/organizations");
+        modelAndView.setViewName("/admin/administration");
         return modelAndView;
     }
 
