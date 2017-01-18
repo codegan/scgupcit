@@ -25,7 +25,7 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <a class="navbar-brand" href="#" style="margin-top: -10px;">
-            <img alt="Brand" src="<c:url value="/resources/img/logo/gerb_chechni.png"/>">
+            <img class="logo" alt="Brand" src="<c:url value="/resources/img/logo/gerb_chechni.png"/>">
         </a>
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

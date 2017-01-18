@@ -39,6 +39,12 @@ public class MainController {
         model.setViewName("/test");
         return model;
     }
+    @RequestMapping(value = {"/test2" }, method = RequestMethod.GET)
+    public ModelAndView test2() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("/test2");
+        return model;
+    }
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
