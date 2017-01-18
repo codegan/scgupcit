@@ -48,12 +48,8 @@ body {
 .navbar-right{
     background-color: #9dda97;
 }
-
-.semiopacity {
-    background: #f9eaea;
-    padding: 5px;
-    opacity: 0.6;
-    filter: alpha(Opacity=70);
-    color: #000;
-    border-radius: 4px;
+.caption .image{
+    background: url(../img/photo.png);
+    width: 245px;
+    height: 240px;
 }
