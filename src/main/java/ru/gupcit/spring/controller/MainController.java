@@ -90,6 +90,6 @@ public class MainController {
     @RequestMapping("/admin/application/edit/{id}")
     public String editBook(@PathVariable("id") int id){
          applicationsDao.setApplicationDateEnd(id);
-        return "/admin/application";
+        return "redirect:/admin/application";
     }
 }

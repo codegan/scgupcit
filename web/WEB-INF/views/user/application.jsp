@@ -19,7 +19,7 @@
 <%@include file="../includes/header.jsp"%>
 <!-- основная сетка-->
 <div class="row" style="padding: 5px;">
-    <div class="col-lg-9">
+    <div class="col-lg-10">
         <span class="visible-lg"></span>
         <div class="panel panel-info">
             <div class="panel-heading">Отправленные заявки</div>
@@ -32,6 +32,7 @@
                             <th>Система</th>
                             <th>Текст заявки</th>
                             <th>Дата создания</th>
+                            <th>Дата завершения</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -42,30 +43,38 @@
                             <td>${emp.system_name}</td>
                             <td>${emp.text}</td>
                             <td>${emp.start_date}</td>
+                            <c:if test="${!empty emp.end_date}">
+                                <td>${emp.end_date}</td>
+                            </c:if>
+                            <c:if test="${empty emp.end_date}">
+                                <td class="warning">В работе</td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                     </tbody>
                 </table>
             </div>
-        </div>
-        <div id="controls">
-            <div id="perpage">
-                <select onchange="sorter.size(this.value)">
-                    <option value="5">5</option>
-                    <option value="10" selected="selected">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>Записи на страницу</span>
+            <div class="panel-footer">
+                <div id="controls">
+                    <div id="perpage">
+                        <select onchange="sorter.size(this.value)">
+                            <option value="5">5</option>
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span>Записи на страницу</span>
+                    </div>
+                    <div id="navigation">
+                        <img src="<c:url value="/resources/img/images/first.gif"/>" width="16" height="16" title="Первая страница" onclick="sorter.move(-1,true)" />
+                        <img src="<c:url value="/resources/img/images/previous.gif"/>" width="16" height="16" title="Предыдущая страница" onclick="sorter.move(-1)" />
+                        <img src="<c:url value="/resources/img/images/next.gif"/>" width="16" height="16" title="следующая страница" onclick="sorter.move(1)" />
+                        <img src="<c:url value="/resources/img/images/last.gif"/>" width="16" height="16" title="последняя страница" onclick="sorter.move(1,true)" />
+                    </div>
+                    <div id="text">Страница <span id="currentpage"></span> из <span id="pagelimit"></span></div>
+                </div>
             </div>
-            <div id="navigation">
-                <img src="<c:url value="/resources/img/images/first.gif"/>" width="16" height="16" title="Первая страница" onclick="sorter.move(-1,true)" />
-                <img src="<c:url value="/resources/img/images/previous.gif"/>" width="16" height="16" title="Предыдущая страница" onclick="sorter.move(-1)" />
-                <img src="<c:url value="/resources/img/images/next.gif"/>" width="16" height="16" title="следующая страница" onclick="sorter.move(1)" />
-                <img src="<c:url value="/resources/img/images/last.gif"/>" width="16" height="16" title="последняя страница" onclick="sorter.move(1,true)" />
-            </div>
-            <div id="text">Страница <span id="currentpage"></span> из <span id="pagelimit"></span></div>
         </div>
         <script type="text/javascript" src="<c:url value="/resources/js/scriptsorter.js"/>"></script>
         <script type="text/javascript">
@@ -83,7 +92,7 @@
             sorter.init("table",1);
         </script>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
     <!-- Кнопка для появления модального окна для отправки услуг -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
         Создать заявку

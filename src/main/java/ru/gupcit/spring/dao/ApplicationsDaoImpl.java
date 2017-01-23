@@ -62,7 +62,7 @@ public class ApplicationsDaoImpl implements IApplicationsDao {
     }
     public List<Applications> getApplicationsFromUser(){
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        String sql = "SELECT scgupcit.applications.startdate startdate, scgupcit.categories.name cgname, scgupcit.system.name stname, scgupcit.applications.id id, scgupcit.applications.text text FROM "+
+        String sql = "SELECT scgupcit.applications.enddate enddate, scgupcit.applications.startdate startdate, scgupcit.categories.name cgname, scgupcit.system.name stname, scgupcit.applications.id id, scgupcit.applications.text text FROM "+
                 "scgupcit.users INNER JOIN scgupcit.applications on (scgupcit.users.id=scgupcit.applications.id_user)"+
                 "INNER JOIN scgupcit.categories on (scgupcit.categories.id = scgupcit.applications.id_categories)"+
                 "INNER JOIN scgupcit.system on (scgupcit.system.id = scgupcit.applications.id_system)"+
@@ -78,6 +78,9 @@ public class ApplicationsDaoImpl implements IApplicationsDao {
                         app.setText(rs.getString("text"));
                         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-dd-yyyy HH:mm");
                         app.setStart_date(simpleDateFormat.format(rs.getTimestamp("startdate")));
+                        if(rs.getTimestamp("enddate")!= null){
+                            app.setEnd_date(simpleDateFormat.format(rs.getTimestamp("enddate")));
+                        }
                         return app;
                     }
                 });
