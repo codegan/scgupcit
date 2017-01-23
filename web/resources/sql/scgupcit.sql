@@ -28,6 +28,8 @@ CREATE TABLE `applications` (
   `id_categories` int(11) NOT NULL,
   `id_system` int(11) NOT NULL,
   `text` text NOT NULL,
+  `enddate` datetime DEFAULT NULL,
+  `startdate` datetime DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_applications_users_idx` (`id_user`),
   KEY `fk_applications_categories_idx` (`id_categories`),
@@ -35,7 +37,7 @@ CREATE TABLE `applications` (
   CONSTRAINT `fk_applications_categories` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_system` FOREIGN KEY (`id_system`) REFERENCES `system` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +46,7 @@ CREATE TABLE `applications` (
 
 LOCK TABLES `applications` WRITE;
 /*!40000 ALTER TABLE `applications` DISABLE KEYS */;
-INSERT INTO `applications` VALUES (1,2,2,2,'hello'),(2,2,2,3,'hello'),(3,3,4,5,'Дополнительное описание арм не работает не могу зайти уже второй день!!');
+INSERT INTO `applications` VALUES (42,3,1,1,'gfgdfg',NULL,'2017-01-23 12:30:02'),(43,3,2,1,'sdsdasd','2017-01-23 12:31:27','2017-01-23 12:31:27'),(44,3,1,1,'xcxcxcx',NULL,'2017-01-23 14:24:07'),(45,3,1,1,'fghgfhgfh','2017-01-23 15:47:58','2017-01-23 15:47:58'),(46,3,1,1,'','2017-01-23 18:00:18','2017-01-23 16:43:50'),(47,3,1,1,'dsfdsf','2017-01-23 18:00:12','2017-01-23 17:49:36');
 /*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -86,7 +88,7 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +97,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (1,'СМЭВ ЛПР'),(2,'РГУ'),(3,'ГАСУ ЧР'),(4,'СЭДО ЧР');
+INSERT INTO `categories` VALUES (1,'Сетевые неполадки'),(2,'Настройка АРМ'),(3,'Консультация'),(4,'Переустановка АРМ'),(5,'Установка ноаого рабочего места');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +136,7 @@ CREATE TABLE `system` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,7 +145,7 @@ CREATE TABLE `system` (
 
 LOCK TABLES `system` WRITE;
 /*!40000 ALTER TABLE `system` DISABLE KEYS */;
-INSERT INTO `system` VALUES (1,'Сетевые неполадки'),(2,'Настройка АРМ'),(3,'Консультация'),(4,'Переустановка АРМ'),(5,'Установка ноаого рабочего места');
+INSERT INTO `system` VALUES (1,'СМЭВ ЛПР'),(2,'РГУ'),(3,'ГАСУ ЧР'),(4,'CЭДО ЧР');
 /*!40000 ALTER TABLE `system` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,6 +165,7 @@ CREATE TABLE `users` (
   `firstname` varchar(45) NOT NULL,
   `patronimyc` varchar(45) NOT NULL,
   `enabled` tinyint(1) NOT NULL,
+  `phone` varchar(12) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_users_organizations_idx` (`id_organization`),
   CONSTRAINT `fk_users_organizations` FOREIGN KEY (`id_organization`) REFERENCES `organizations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
@@ -175,7 +178,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1),(2,'user','user',1,'Testov','Test','Testovich',1),(3,'zaur','zaur',2,'Эльбукаев','Заур','Хусейнович',1);
+INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1,'000000000000'),(2,'user','user',1,'Testov','Test','Testovich',0,'89280010203'),(3,'zaur','zaur',2,'Эльбукаев','Заур','Хусейнович',1,'89604000000');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -188,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-11 17:46:44
+-- Dump completed on 2017-01-23 18:01:10

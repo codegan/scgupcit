@@ -24,7 +24,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 </head>
 <body>
-<div class="container">
 <!--Панель навигации для пользователей-->
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -75,7 +74,7 @@
             <div class="carousel-inner">
                 <!-- Слайды создаются с помощью контейнера с классом item, внутри которого помещается содержимое слайда -->
                 <div class="active item" style="height: 290px">
-                    <img src="http://gupcit.ru/img/content/header%202.jpg" alt="...">
+                    <img src="<c:url value="/resources/img/черхигов.jpg"/>" alt="...">
                 </div>
                 <!-- Слайд №2 -->
                 <div class="item" style="height: 290px">
@@ -83,7 +82,7 @@
                 </div>
                 <!-- Слайд №3 -->
                 <div class="item" style="height: 290px">
-                    <img src="http://gupcit.ru/img/content/header%202.jpg" alt="...">
+                    <img src="<c:url value="/resources/img/черхигов.jpg"/> " alt="...">
                     <div class="carousel-caption">
                         <h3>Гуп</h3>
                         <p>Центр информационных технологии</p>
@@ -166,7 +165,6 @@
             </div>
         </div>
     </div>
-</div>
 </div>
 </body>
 </html>

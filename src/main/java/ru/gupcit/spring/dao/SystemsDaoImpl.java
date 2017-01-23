@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by zaur on 16.01.17.
  */
-public class SystemsDaoImpl {
+public class SystemsDaoImpl implements ISystemsDao{
     JdbcTemplate jdbcTemplate;
     public void setTemplate(JdbcTemplate template) {
         this.jdbcTemplate = template;

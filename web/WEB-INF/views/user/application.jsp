@@ -31,6 +31,7 @@
                             <th>Категория</th>
                             <th>Система</th>
                             <th>Текст заявки</th>
+                            <th>Дата создания</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -40,6 +41,7 @@
                             <td>${emp.category_name}</td>
                             <td>${emp.system_name}</td>
                             <td>${emp.text}</td>
+                            <td>${emp.start_date}</td>
                         </tr>
                     </c:forEach>
                     </tbody>

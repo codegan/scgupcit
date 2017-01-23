@@ -5,10 +5,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ru.gupcit.spring.dao.ApplicationsDaoImpl;
 import ru.gupcit.spring.dao.CategoriesDaoImpl;
@@ -33,18 +30,6 @@ public class MainController {
     @Autowired
     SystemsDaoImpl systemsDao;
 
-    @RequestMapping(value = {"/test" }, method = RequestMethod.GET)
-    public ModelAndView test() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("/test");
-        return model;
-    }
-    @RequestMapping(value = {"/test2" }, method = RequestMethod.GET)
-    public ModelAndView test2() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("/test2");
-        return model;
-    }
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
         ModelAndView model = new ModelAndView();
@@ -100,5 +85,11 @@ public class MainController {
     public String addBook(@ModelAttribute("setapp") Applications applications){
        applicationsDao.setApplication(applications);
         return "redirect:/user/application";
+    }
+
+    @RequestMapping("/admin/application/edit/{id}")
+    public String editBook(@PathVariable("id") int id){
+         applicationsDao.setApplicationDateEnd(id);
+        return "/admin/application";
     }
 }

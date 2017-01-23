@@ -14,7 +14,7 @@ import java.util.List;
 /**
  * Created by zaur on 16.01.17.
  */
-public class CategoriesDaoImpl {
+public class CategoriesDaoImpl implements ICategoriesDao{
 
     JdbcTemplate jdbcTemplate;
     public void setTemplate(JdbcTemplate template) {

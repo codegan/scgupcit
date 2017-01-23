@@ -17,7 +17,7 @@
 <%@include file="../includes/headeradmin.jsp"%>
 
 <div class="row" style="padding: 5px;">
-    <div class="col-lg-9">
+    <div class="col-lg-10">
         <div class="panel panel-info">
             <div class="panel-heading">Весь список заявок</div>
             <div class="panel-body">
@@ -31,6 +31,8 @@
                             <th>Категория</th>
                             <th>Система</th>
                             <th>Текст заявки</th>
+                            <th>Дата создания</th>
+                            <th>Дата завершения</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,11 +45,18 @@
                                 <td>${emp.category_name}</td>
                                 <td>${emp.system_name}</td>
                                 <td>${emp.text}</td>
+                                <td>${emp.start_date}</td>
+                                <c:if test="${!empty emp.end_date}">
+                                    <td>${emp.end_date}</td>
+                                </c:if>
+                                <c:if test="${empty emp.end_date}">
+                                    <td><a href="<c:url value='/admin/application/edit/${emp.id}' />" class="btn btn-success">Завершить</a></td>
+                                </c:if>
                             </tr>
                         </c:forEach>
                     </tbody>
                 </table>
-            </div>
+\            </div>
         </div>
         <div id="controls">
             <div id="perpage">
@@ -84,7 +93,7 @@
             sorter.init("table",1);
         </script>
     </div>
-    <div class="col-lg-3">
+    <div class="col-lg-2">
         <div class="panel panel-info">
             <div class="panel-heading">Статистика</div>
             <div class="panel-body">

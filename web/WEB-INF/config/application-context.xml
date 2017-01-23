@@ -31,7 +31,7 @@
         <property name="template" ref="jdbcTemplate"/>
         <property name="usersDao" ref="usersDao"/>
     </bean>
-    <bean id="usersDao" class="ru.gupcit.spring.dao.UsersDao">
+    <bean id="usersDao" class="ru.gupcit.spring.dao.UsersDaoImpl">
         <property name="template" ref="jdbcTemplate"/>
     </bean>
     <bean id="categoriesDao" class="ru.gupcit.spring.dao.CategoriesDaoImpl">

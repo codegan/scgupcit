@@ -90,102 +90,111 @@
       <mandatory>1</mandatory>
       <data-type>text|0</data-type>
     </column>
-    <index id="34" parent="12" name="fk_applications_categories_idx">
+    <column id="34" parent="12" name="applicationscol">
+      <data-type>varchar(45)|0</data-type>
+    </column>
+    <column id="35" parent="12" name="startdate">
+      <data-type>date|0</data-type>
+    </column>
+    <column id="36" parent="12" name="enddate">
+      <data-type>date|0</data-type>
+    </column>
+    <index id="37" parent="12" name="fk_applications_categories_idx">
       <columns>id_categories</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="35" parent="12" name="fk_applications_system_idx">
+    <index id="38" parent="12" name="fk_applications_system_idx">
       <columns>id_system</columns>
       <desc-columns></desc-columns>
     </index>
-    <index id="36" parent="12" name="fk_applications_users_idx">
+    <index id="39" parent="12" name="fk_applications_users_idx">
       <columns>id_user</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="37" parent="12" name="PRIMARY">
+    <key id="40" parent="12" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="38" parent="12" name="fk_applications_users">
+    <foreign-key id="41" parent="12" name="fk_applications_users">
       <columns>id_user</columns>
       <ref-key>~.users.PRIMARY</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="39" parent="12" name="fk_applications_categories">
+    <foreign-key id="42" parent="12" name="fk_applications_categories">
       <columns>id_categories</columns>
       <ref-key>~.categories.PRIMARY</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <foreign-key id="40" parent="12" name="fk_applications_system">
+    <foreign-key id="43" parent="12" name="fk_applications_system">
       <columns>id_system</columns>
       <ref-key>~.system.PRIMARY</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="41" parent="13" name="id">
+    <column id="44" parent="13" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="42" parent="13" name="authority">
+    <column id="45" parent="13" name="authority">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <column id="43" parent="13" name="id_user">
+    <column id="46" parent="13" name="id_user">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
     </column>
-    <index id="44" parent="13" name="fk_authorities_users_idx">
+    <index id="47" parent="13" name="fk_authorities_users_idx">
       <columns>id_user</columns>
       <desc-columns></desc-columns>
     </index>
-    <key id="45" parent="13" name="PRIMARY">
+    <key id="48" parent="13" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <foreign-key id="46" parent="13" name="fk_authorities_users">
+    <foreign-key id="49" parent="13" name="fk_authorities_users">
       <columns>id_user</columns>
       <ref-key>PRIMARY</ref-key>
       <cascade-update-rule>no_action</cascade-update-rule>
       <cascade-delete-rule>no_action</cascade-delete-rule>
     </foreign-key>
-    <column id="47" parent="14" name="id">
+    <column id="50" parent="14" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="48" parent="14" name="name">
+    <column id="51" parent="14" name="name">
       <data-type>varchar(45)|0</data-type>
     </column>
-    <key id="49" parent="14" name="PRIMARY">
+    <key id="52" parent="14" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="50" parent="15" name="id">
+    <column id="53" parent="15" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="51" parent="15" name="name">
+    <column id="54" parent="15" name="name">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <key id="52" parent="15" name="PRIMARY">
+    <key id="55" parent="15" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <column id="53" parent="16" name="id">
+    <column id="56" parent="16" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="54" parent="16" name="name">
+    <column id="57" parent="16" name="name">
       <mandatory>1</mandatory>
       <data-type>varchar(45)|0</data-type>
     </column>
-    <key id="55" parent="16" name="PRIMARY">
+    <key id="58" parent="16" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>

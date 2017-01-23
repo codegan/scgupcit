@@ -1,5 +1,7 @@
 package ru.gupcit.spring.model;
 
+import java.util.Date;
+
 /**
  * Created by zaur on 09.01.17.
  */
@@ -13,6 +15,8 @@ public class Applications {
     private String System_name;
     private String Text;
     private String Phone;
+    private String Start_date;
+    private String End_date;
 
     public Applications() {
     }
@@ -88,5 +92,21 @@ public class Applications {
 
     public void setPhone(String phone) {
         Phone = phone;
+    }
+
+    public String  getStart_date() {
+        return Start_date;
+    }
+
+    public void setStart_date(String start_date) {
+        Start_date = start_date;
+    }
+
+    public String getEnd_date() {
+        return End_date;
+    }
+
+    public void setEnd_date(String end_date) {
+        End_date = end_date;
     }
 }
