@@ -39,7 +39,6 @@
             </button>
             <span style="margin-top: -5px" class="navbar-brand">Центр информационных технологии<br><h6 style="margin-top: 0px">Чеченской Республики</h6> </span>
         </div>
-
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Войти</b> <span class="caret"></span></a>
@@ -131,7 +130,7 @@
                     <div class="content">
                         <div class="error"></div>
                         <div class="form loginBox">
-                            <form class="form" role="form" method="post" action="j_spring_security_check" id="login-nav" name="form_login">
+                            <form class="form" role="form" method="post" action="/scgupcit/j_spring_security_check" id="login-nav" name="form_login">
                                 <input id="login" class="form-control" type="text" placeholder="Email" name="user_login">
                                 <input id="password" class="form-control" type="password" placeholder="Password" name="password_login">
                                 <input class="btn btn-default btn-login" type="submit" name="submit" value="Вход">
@@ -154,9 +153,9 @@
             </div>
             <div class="modal-footer">
                 <div class="forgot login-footer">
- <span>У вас нет аккаунта?
- <a href="javascript: showRegisterForm();">Зарегистрируйтесь</a>
- </span>
+                    <span>У вас нет аккаунта?
+                        <a href="javascript: showRegisterForm();">Зарегистрируйтесь</a>
+                    </span>
                 </div>
                 <div class="forgot register-footer" style="display:none">
                     <span>У Вас есть аккаунт?</span>

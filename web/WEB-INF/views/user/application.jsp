@@ -36,17 +36,17 @@
                         </tr>
                     </thead>
                     <tbody>
-                    <c:forEach var="emp" items="${app}">
+                    <c:forEach var="app" items="${app}">
                         <tr>
-                            <td>${emp.id}</td>
-                            <td>${emp.category_name}</td>
-                            <td>${emp.system_name}</td>
-                            <td>${emp.text}</td>
-                            <td>${emp.start_date}</td>
-                            <c:if test="${!empty emp.end_date}">
-                                <td>${emp.end_date}</td>
+                            <td>${app.id}</td>
+                            <td>${app.category_name}</td>
+                            <td>${app.system_name}</td>
+                            <td>${app.text}</td>
+                            <td>${app.start_date}</td>
+                            <c:if test="${!empty app.end_date}">
+                                <td>${app.end_date}</td>
                             </c:if>
-                            <c:if test="${empty emp.end_date}">
+                            <c:if test="${empty app.end_date}">
                                 <td class="warning">В работе</td>
                             </c:if>
                         </tr>

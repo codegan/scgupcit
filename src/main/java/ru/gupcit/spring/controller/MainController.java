@@ -13,6 +13,8 @@ import ru.gupcit.spring.dao.SystemsDaoImpl;
 import ru.gupcit.spring.model.Applications;
 import ru.gupcit.spring.model.Categoryes;
 import ru.gupcit.spring.model.Systems;
+import ru.gupcit.spring.model.Users;
+import ru.gupcit.spring.service.AuthenticationService;
 
 import java.security.Principal;
 import java.util.List;
@@ -29,6 +31,9 @@ public class MainController {
     CategoriesDaoImpl categoriesDao;
     @Autowired
     SystemsDaoImpl systemsDao;
+
+    @Autowired
+    AuthenticationService authenticationService;
 
     @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error) {
@@ -65,9 +70,14 @@ public class MainController {
     }
 
     @RequestMapping(value = "/admin/administration", method = RequestMethod.GET)
-    public ModelAndView getUsers(ModelAndView modelAndView){
-        modelAndView.setViewName("/admin/administration");
-        return modelAndView;
+    public String getUsers(Model model){
+        model.addAttribute("usersList", authenticationService.usersList());
+        return "/admin/administration";
+    }
+    @RequestMapping(value= "/admin/administration/user/add", method = RequestMethod.POST)
+    public String addUser(@ModelAttribute("setUser") Users users){
+       authenticationService.addUser(users);
+        return "redirect:/admin/administration";
     }
 
     @RequestMapping(value = "user/application", method = RequestMethod.GET)
@@ -75,10 +85,12 @@ public class MainController {
         List<Applications> applications = applicationsDao.getApplicationsFromUser();
         List<Categoryes> categoryes = categoriesDao.getAllCategoryes();
         List<Systems> systems = systemsDao.getAllSystemses();
+        Users users = authenticationService.getUsersDao();
         model.addAttribute("app", applications);
         model.addAttribute("categ", categoryes);
         model.addAttribute("syst", systems);
         model.addAttribute("setApp", new Applications());
+        model.addAttribute("userinfo", users);
         return "/user/application";
     }
     @RequestMapping(value= "/user/application/add", method = RequestMethod.POST)

@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Заявки</title>
@@ -36,21 +35,21 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <c:forEach var="emp" items="${list}">
+                        <c:forEach var="app" items="${list}">
                             <tr>
-                                <td>${emp.id}</td>
-                                <td>${emp.fio}</td>
-                                <td>${emp.phone}</td>
-                                <td>${emp.organizations}</td>
-                                <td>${emp.category_name}</td>
-                                <td>${emp.system_name}</td>
-                                <td>${emp.text}</td>
-                                <td>${emp.start_date}</td>
-                                <c:if test="${!empty emp.end_date}">
-                                    <td>${emp.end_date}</td>
+                                <td>${app.id}</td>
+                                <td>${app.fio}</td>
+                                <td>${app.phone}</td>
+                                <td>${app.organizations}</td>
+                                <td>${app.category_name}</td>
+                                <td>${app.system_name}</td>
+                                <td>${app.text}</td>
+                                <td>${app.start_date}</td>
+                                <c:if test="${!empty app.end_date}">
+                                    <td>${app.end_date}</td>
                                 </c:if>
-                                <c:if test="${empty emp.end_date}">
-                                    <td><a href="<c:url value='/admin/application/edit/${emp.id}' />" class="btn btn-success">Завершить</a></td>
+                                <c:if test="${empty app.end_date}">
+                                    <td><a href="<c:url value='/admin/application/edit/${app.id}' />" class="btn btn-success">Завершить</a></td>
                                 </c:if>
                             </tr>
                         </c:forEach>
@@ -97,7 +96,7 @@
         <div class="panel panel-info">
             <div class="panel-heading">Статистика</div>
             <div class="panel-body">
-               Общее колличество заявок: <form:out value="${stat}"/>
+               Общее колличество заявок: <c:out value="${stat}"/>
             </div>
         </div>
     </div>

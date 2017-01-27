@@ -5,6 +5,8 @@ package ru.gupcit.spring.dao;
  */
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import ru.gupcit.spring.model.Users;
@@ -35,5 +37,33 @@ public class UsersDaoImpl implements IUsersDao{
                     }
                 });
         return users;
+    }
+    public void addUser(Users users) {
+        String sql = "INSERT INTO scgupcit.users " +
+                "(username, password, id_organization, firstname, lastname, patronimyc, phone, enabled) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        jdbcTemplate.update(sql, new Object[] {users.getUsername(), users.getPassword(), users.getId_organization(),users.getLastname(),users.getFirstname(), users.getPatronimyc(), users.getPhone(), users.getEnable()});
+    }
+
+    public List<Users> getAllUserInfo(){
+        String sql = "SELECT u.id id, u.username name, u.password pass, o.name orgname, a.authority role ,u.lastname ln," +
+                "u.firstname fn, u.patronimyc pn FROM "+
+                "users u INNER JOIN authorities a on (u.id=a.id_user)"+
+                "INNER JOIN scgupcit.organizations o ON (u.id_organization=o.id)";
+        return jdbcTemplate.query(sql,
+                new RowMapper<Users>() {
+                    public Users mapRow(ResultSet rs, int rowNum) throws SQLException {
+                        Users user = new Users();
+                        user.setId(rs.getInt("id"));
+                        user.setUsername(rs.getString("name"));
+                        user.setPassword(rs.getString("pass"));
+                        user.setName_organization(rs.getString("orgname"));
+                        user.setRole(rs.getString("role"));
+                        user.setLastname(rs.getString("ln"));
+                        user.setFirstname(rs.getString("fn"));
+                        user.setPatronimyc(rs.getString("pn"));
+                        return user;
+                    }
+                });
     }
 }

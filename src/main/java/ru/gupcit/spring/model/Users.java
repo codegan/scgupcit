@@ -7,10 +7,15 @@ public class Users {
     private int id;
     private String username;
     private String password;
+    private int id_organization;
+    private String name_organization;
     private String role;
     private String lastname;
     private String firstname;
     private String patronimyc;
+    private int enable;
+    private String phone;
+
     public int getId() {
         return id;
     }
@@ -57,5 +62,38 @@ public class Users {
 
     public void setPatronimyc(String patronimyc) {
         this.patronimyc = patronimyc;
+    }
+
+    public int getId_organization() {
+        return id_organization;
+    }
+
+    public void setId_organization(int id_organization) {
+        this.id_organization = id_organization;
+    }
+
+    public int getEnable() {
+        return enable;
+    }
+
+    public void setEnable(int enable) {
+        this.enable = enable;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone)
+    {
+        this.phone = phone;
+    }
+
+    public String getName_organization() {
+        return name_organization;
+    }
+
+    public void setName_organization(String name_organization) {
+        this.name_organization = name_organization;
     }
 }
