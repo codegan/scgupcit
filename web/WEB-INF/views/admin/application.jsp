@@ -5,7 +5,8 @@
   Time: 9:50
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@ page language="java" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
@@ -14,6 +15,8 @@
 <body>
 <!--Шапка сайта-->
 <%@include file="../includes/headeradmin.jsp"%>
+<c:url value="/admin/application/excel" var="excelController"/>
+<c:url value="/admin/application/pdf" var="pdfController"/>
 
 <div class="row" style="padding: 5px;">
     <div class="col-lg-10">
@@ -55,26 +58,30 @@
                         </c:forEach>
                     </tbody>
                 </table>
-\            </div>
-        </div>
-        <div id="controls">
-            <div id="perpage">
-                <select onchange="sorter.size(this.value)">
-                    <option value="5">5</option>
-                    <option value="10" selected="selected">10</option>
-                    <option value="20">20</option>
-                    <option value="50">50</option>
-                    <option value="100">100</option>
-                </select>
-                <span>Записи на страницу</span>
             </div>
-            <div id="navigation">
-                <img src="<c:url value="/resources/img/images/first.gif"/>" width="16" height="16" title="Первая страница" onclick="sorter.move(-1,true)" />
-                <img src="<c:url value="/resources/img/images/previous.gif"/>" width="16" height="16" title="Предыдущая страница" onclick="sorter.move(-1)" />
-                <img src="<c:url value="/resources/img/images/next.gif"/>" width="16" height="16" title="следующая страница" onclick="sorter.move(1)" />
-                <img src="<c:url value="/resources/img/images/last.gif"/>" width="16" height="16" title="последняя страница" onclick="sorter.move(1,true)" />
+            <div class="panel-footer">
+                <div id="controls">
+                    <div id="perpage">
+                        <select style="width: 80px" class="selectpicker form-control" onchange="sorter.size(this.value)">
+                            <option value="5">5</option>
+                            <option value="10" selected="selected">10</option>
+                            <option value="20">20</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select>
+                        <span>Записи на страницу</span>
+                    </div>
+                    <nav>
+                        <ul class="pager">
+                            <li><a href="#" onclick="sorter.move(-1)">Назад</a></li>
+                            <li><a href="#" onclick="sorter.move(-1,true)">Начало</a></li>
+                            <li><a href="#" onclick="sorter.move(1,true)">Конец</a></li>
+                            <li><a href="#" onclick="sorter.move(1)">Вперед</a></li>
+                        </ul>
+                    </nav>
+                    <div id="text">Страница <span id="currentpage"></span> из <span id="pagelimit"></span></div>
+                </div>
             </div>
-            <div id="text">Страница <span id="currentpage"></span> из <span id="pagelimit"></span></div>
         </div>
         <script type="text/javascript" src="<c:url value="/resources/js/scriptsorter.js"/>"></script>
         <script type="text/javascript">
@@ -95,8 +102,15 @@
     <div class="col-lg-2">
         <div class="panel panel-info">
             <div class="panel-heading">Статистика</div>
+                <div class="panel-body">
+                    Общее колличество заявок: <c:out value="${stat}"/>
+                </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">Скачать в виде</div>
             <div class="panel-body">
-               Общее колличество заявок: <c:out value="${stat}"/>
+                <a class="btn btn-default" href="${excelController}">Excel</a>
+                <!--<a class="btn btn-default" href="${pdfController}">PDF</a>-->
             </div>
         </div>
     </div>

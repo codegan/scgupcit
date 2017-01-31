@@ -104,4 +104,26 @@ public class MainController {
          applicationsDao.setApplicationDateEnd(id);
         return "redirect:/admin/application";
     }
+
+    @RequestMapping(value = "/admin/application/excel", method= RequestMethod.GET)
+    public ModelAndView excel() {
+        System.out.println("ExcelPDFController excel is called");
+
+        List<Applications> applicationses = applicationsDao.getAllApplications();
+
+        //excelDocument - look excel-pdf-config.xml
+        return new ModelAndView("excelDocument", "modelObject", applicationses);
+
+    }
+
+    @RequestMapping(value = "/admin/application/pdf", method= RequestMethod.GET)
+    public ModelAndView pdf() {
+
+        System.out.println("ExcelPDFController pdf is called");
+
+        List<Applications> applicationses = applicationsDao.getAllApplications();
+        //pdfDocument - look excel-pdf-config.xml
+        return new ModelAndView("pdfDocument", "modelObject", applicationses);
+
+    }
 }

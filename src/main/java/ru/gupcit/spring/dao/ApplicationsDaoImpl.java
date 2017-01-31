@@ -66,7 +66,7 @@ public class ApplicationsDaoImpl implements IApplicationsDao {
                 "scgupcit.users INNER JOIN scgupcit.applications on (scgupcit.users.id=scgupcit.applications.id_user)"+
                 "INNER JOIN scgupcit.categories on (scgupcit.categories.id = scgupcit.applications.id_categories)"+
                 "INNER JOIN scgupcit.system on (scgupcit.system.id = scgupcit.applications.id_system)"+
-                "WHERE scgupcit.users.username = ?  ORDER BY scgupcit.applications.id DESC";
+                "WHERE scgupcit.users.username = ? ORDER BY scgupcit.applications.id DESC";
 
         return  jdbcTemplate.query(sql, new Object[]{userDetails.getUsername()},
                 new RowMapper<Applications>() {

@@ -47,7 +47,12 @@
                                 <td>${app.end_date}</td>
                             </c:if>
                             <c:if test="${empty app.end_date}">
-                                <td class="warning">В работе</td>
+                                <td>
+                                    <span class="label label-warning">
+                                        В работе
+                                    </span>
+
+                                </td>
                             </c:if>
                         </tr>
                     </c:forEach>
@@ -57,7 +62,7 @@
             <div class="panel-footer">
                 <div id="controls">
                     <div id="perpage">
-                        <select onchange="sorter.size(this.value)">
+                        <select style="width: 80px" class="selectpicker" onchange="sorter.size(this.value)">
                             <option value="5">5</option>
                             <option value="10" selected="selected">10</option>
                             <option value="20">20</option>
@@ -66,12 +71,14 @@
                         </select>
                         <span>Записи на страницу</span>
                     </div>
-                    <div id="navigation">
-                        <img src="<c:url value="/resources/img/images/first.gif"/>" width="16" height="16" title="Первая страница" onclick="sorter.move(-1,true)" />
-                        <img src="<c:url value="/resources/img/images/previous.gif"/>" width="16" height="16" title="Предыдущая страница" onclick="sorter.move(-1)" />
-                        <img src="<c:url value="/resources/img/images/next.gif"/>" width="16" height="16" title="следующая страница" onclick="sorter.move(1)" />
-                        <img src="<c:url value="/resources/img/images/last.gif"/>" width="16" height="16" title="последняя страница" onclick="sorter.move(1,true)" />
-                    </div>
+                    <nav>
+                        <ul class="pager">
+                            <li><a href="#" onclick="sorter.move(-1)">Назад</a></li>
+                            <li><a href="#" onclick="sorter.move(-1,true)">Начало</a></li>
+                            <li><a href="#" onclick="sorter.move(1,true)">Конец</a></li>
+                            <li><a href="#" onclick="sorter.move(1)">Вперед</a></li>
+                        </ul>
+                    </nav>
                     <div id="text">Страница <span id="currentpage"></span> из <span id="pagelimit"></span></div>
                 </div>
             </div>
