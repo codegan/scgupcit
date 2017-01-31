@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.16, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.17, for Linux (x86_64)
 --
 -- Host: localhost    Database: scgupcit
 -- ------------------------------------------------------
--- Server version	5.7.16-0ubuntu0.16.04.1
+-- Server version	5.7.17-0ubuntu0.16.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -37,7 +37,7 @@ CREATE TABLE `applications` (
   CONSTRAINT `fk_applications_categories` FOREIGN KEY (`id_categories`) REFERENCES `categories` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_system` FOREIGN KEY (`id_system`) REFERENCES `system` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_applications_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,7 +46,7 @@ CREATE TABLE `applications` (
 
 LOCK TABLES `applications` WRITE;
 /*!40000 ALTER TABLE `applications` DISABLE KEYS */;
-INSERT INTO `applications` VALUES (42,3,1,1,'gfgdfg',NULL,'2017-01-23 12:30:02'),(43,3,2,1,'sdsdasd','2017-01-23 12:31:27','2017-01-23 12:31:27'),(44,3,1,1,'xcxcxcx',NULL,'2017-01-23 14:24:07'),(45,3,1,1,'fghgfhgfh','2017-01-23 15:47:58','2017-01-23 15:47:58'),(46,3,1,1,'','2017-01-23 18:00:18','2017-01-23 16:43:50'),(47,3,1,1,'dsfdsf','2017-01-23 18:00:12','2017-01-23 17:49:36');
+INSERT INTO `applications` VALUES (42,3,1,1,'gfgdfg','2017-01-24 09:33:32','2017-01-23 12:30:02'),(43,3,2,1,'sdsdasd','2017-01-23 12:31:27','2017-01-23 12:31:27'),(44,3,1,1,'xcxcxcx','2017-01-24 09:26:13','2017-01-23 14:24:07'),(45,3,1,1,'fghgfhgfh','2017-01-23 15:47:58','2017-01-23 15:47:58'),(46,3,1,1,'','2017-01-23 18:00:18','2017-01-23 16:43:50'),(47,3,1,1,'dsfdsf','2017-01-23 18:00:12','2017-01-23 17:49:36'),(48,3,2,1,'Добрый день не работает арм','2017-01-24 09:36:58','2017-01-24 09:35:13'),(49,2,1,1,'ыфвыфвфыв','2017-01-30 15:01:30','2017-01-30 15:01:21'),(50,3,1,3,'regfdgfdgdgdf','2017-01-30 17:22:21','2017-01-30 16:07:49'),(51,3,1,3,'fdgdfgdfgdfgf','2017-01-30 17:22:20','2017-01-30 16:07:55'),(52,3,2,4,'dfgdfgdfgfdg','2017-01-30 17:22:19','2017-01-30 16:08:01'),(53,3,1,1,'dfgdfgdfg','2017-01-30 17:22:22','2017-01-30 16:08:07'),(54,3,1,2,'dfgdfgdfgfd','2017-01-30 17:22:22','2017-01-30 16:08:12'),(55,3,2,3,'ssssssssssssssssssssssssssssssss','2017-01-30 17:42:53','2017-01-30 17:42:35'),(56,3,1,2,'4554545\r\n','2017-01-30 17:46:59','2017-01-30 17:46:30');
 /*!40000 ALTER TABLE `applications` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -63,8 +63,8 @@ CREATE TABLE `authorities` (
   `id_user` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_authorities_users_idx` (`id_user`),
-  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`id_user`) REFERENCES `authorities` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+  CONSTRAINT `fk_authorities_users` FOREIGN KEY (`id_user`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,7 @@ CREATE TABLE `authorities` (
 
 LOCK TABLES `authorities` WRITE;
 /*!40000 ALTER TABLE `authorities` DISABLE KEYS */;
-INSERT INTO `authorities` VALUES (1,'ROLE_ADMIN',1),(2,'ROLE_USER',2),(3,'ROLE_USER',3);
+INSERT INTO `authorities` VALUES (1,'ROLE_ADMIN',1),(2,'ROLE_USER',2),(3,'ROLE_USER',3),(4,'ROLE_USER',4),(5,'ROLE_USER',5);
 /*!40000 ALTER TABLE `authorities` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   KEY `fk_users_organizations_idx` (`id_organization`),
   CONSTRAINT `fk_users_organizations` FOREIGN KEY (`id_organization`) REFERENCES `organizations` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +178,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1,'000000000000'),(2,'user','user',1,'Testov','Test','Testovich',0,'89280010203'),(3,'zaur','zaur',2,'Эльбукаев','Заур','Хусейнович',1,'89604000000');
+INSERT INTO `users` VALUES (1,'admin','admin',1,'Zaur','Zaurov','Zaurovich',1,'000000000000'),(2,'user','user',1,'Testov','Test','Testovich',1,'89280010203'),(3,'zaur','zaur',2,'Эльбукаев','Заур','Хусейнович',1,'89604000000'),(4,'login','login,gfdgdf',2,'login,sdfds','login,sdfsdf','login,dfgfd',1,'login,dsfsdf'),(5,'a','a',2,'a','a','a',1,'a');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -191,4 +191,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-23 18:01:10
+-- Dump completed on 2017-01-31 17:32:49
